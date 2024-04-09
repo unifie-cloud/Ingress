@@ -1,0 +1,9 @@
+name: Ingress
+rules: []
+UIshowRequestsConfig: false
+enabledByDefault: true
+ServiceSrcType: Yes-HelmChart
+helmChartName: ingress-nginx
+helmRepositoryURL: https://kubernetes.github.io/ingress-nginx
+helmRepositoryName: ingress-nginx
+helmRepositoryChartName: ingress-nginx
