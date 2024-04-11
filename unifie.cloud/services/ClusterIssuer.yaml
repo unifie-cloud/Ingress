@@ -11,3 +11,6 @@ rules:
       this to contact you about expiring certificates, and issues related to
       your account.
     UIVarInputType: email
+UIshowRequestsConfig: false
+enabledByDefault: false
+ServiceSrcType: No-HelmChart
