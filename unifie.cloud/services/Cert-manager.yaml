@@ -1,9 +1,0 @@
-name: Cert-manager
-rules: []
-UIshowRequestsConfig: false
-enabledByDefault: true
-ServiceSrcType: Yes-HelmChart
-helmChartName: cert-manager
-helmRepositoryName: jetstack
-helmRepositoryURL: https://charts.jetstack.io
-helmRepositoryChartName: cert-manager
