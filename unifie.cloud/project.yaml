@@ -1,0 +1,12 @@
+hardcodedNameSpace: ingress-nginx
+showVerionsTab: false
+showEnvVarsTab: false
+allowAutoApplyLimits: false
+name: Ingress
+title: Ingress
+logo: AppstoreAddOutlined
+tags: []
+description: Ingress
+oneDeploymentPerCluster: true
+notAllowRemoveNamespace: false
+autoAddEnvVarsToDeployments: false
