@@ -1,5 +1,2103 @@
 name: Ingress
-rules: []
+rules:
+  - varName: commonLabels
+    varValueType: object
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '{}'
+    refToSpecVar: ''
+    UIVarTitle: commonLabels
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller
+    varValueType: object
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: >-
+      {"name":"controller","enableAnnotationValidations":false,"image":{"chroot":false,"registry":"registry.k8s.io","image":"ingress-nginx/controller","tag":"v1.10.0","digest":"sha256:42b3f0e5d0846876b1791cd3afeb5f1cbbe4259d6f35651dcc1b5c980925379c","digestChroot":"sha256:7eb46ff733429e0e46892903c7394aff149ac6d284d92b3946f3baf7ff26a096","pullPolicy":"IfNotPresent","runAsNonRoot":true,"runAsUser":101,"allowPrivilegeEscalation":false,"seccompProfile":{"type":"RuntimeDefault"},"readOnlyRootFilesystem":false},"existingPsp":"","containerName":"controller","containerPort":{"http":80,"https":443},"config":{},"configAnnotations":{},"proxySetHeaders":{},"addHeaders":{},"dnsConfig":{},"hostAliases":[],"hostname":{},"dnsPolicy":"ClusterFirst","reportNodeInternalIp":false,"watchIngressWithoutClass":false,"ingressClassByName":false,"enableTopologyAwareRouting":false,"allowSnippetAnnotations":false,"hostNetwork":false,"hostPort":{"enabled":false,"ports":{"http":80,"https":443}},"networkPolicy":{"enabled":false},"electionID":"","ingressClassResource":{"name":"nginx","enabled":true,"default":false,"controllerValue":"k8s.io/ingress-nginx","parameters":{}},"ingressClass":"nginx","podLabels":{},"podSecurityContext":{},"sysctls":{},"containerSecurityContext":{},"publishService":{"enabled":true,"pathOverride":""},"scope":{"enabled":false,"namespace":"","namespaceSelector":""},"configMapNamespace":"","tcp":{"configMapNamespace":"","annotations":{}},"udp":{"configMapNamespace":"","annotations":{}},"maxmindLicenseKey":"","extraArgs":{},"extraEnvs":[],"kind":"Deployment","annotations":{},"labels":{},"updateStrategy":{},"minReadySeconds":0,"tolerations":[],"affinity":{},"topologySpreadConstraints":[],"terminationGracePeriodSeconds":300,"nodeSelector":{"kubernetes.io/os":"linux"},"livenessProbe":{"httpGet":{"path":"/healthz","port":10254,"scheme":"HTTP"},"initialDelaySeconds":10,"periodSeconds":10,"timeoutSeconds":1,"successThreshold":1,"failureThreshold":5},"readinessProbe":{"httpGet":{"path":"/healthz","port":10254,"scheme":"HTTP"},"initialDelaySeconds":10,"periodSeconds":10,"timeoutSeconds":1,"successThreshold":1,"failureThreshold":3},"healthCheckPath":"/healthz","healthCheckHost":"","podAnnotations":{},"replicaCount":1,"minAvailable":1,"resources":{"requests":{"cpu":"100m","memory":"90Mi"}},"autoscaling":{"enabled":false,"annotations":{},"minReplicas":1,"maxReplicas":11,"targetCPUUtilizationPercentage":50,"targetMemoryUtilizationPercentage":50,"behavior":{}},"autoscalingTemplate":[],"keda":{"apiVersion":"keda.sh/v1alpha1","enabled":false,"minReplicas":1,"maxReplicas":11,"pollingInterval":30,"cooldownPeriod":300,"restoreToOriginalReplicaCount":false,"scaledObject":{"annotations":{}},"triggers":[],"behavior":{}},"enableMimalloc":true,"customTemplate":{"configMapName":"","configMapKey":""},"service":{"enabled":true,"external":{"enabled":true},"annotations":{},"labels":{},"type":"LoadBalancer","clusterIP":"","externalIPs":[],"loadBalancerIP":"","loadBalancerSourceRanges":[],"loadBalancerClass":"","externalTrafficPolicy":"","sessionAffinity":"","ipFamilyPolicy":"SingleStack","ipFamilies":["IPv4"],"enableHttp":true,"enableHttps":true,"ports":{"http":80,"https":443},"targetPorts":{"http":"http","https":"https"},"appProtocol":true,"nodePorts":{"http":"","https":"","tcp":{},"udp":{}},"internal":{"enabled":false,"annotations":{},"type":"","clusterIP":"","externalIPs":[],"loadBalancerIP":"","loadBalancerSourceRanges":[],"loadBalancerClass":"","externalTrafficPolicy":"","sessionAffinity":"","ipFamilyPolicy":"SingleStack","ipFamilies":["IPv4"],"ports":{},"targetPorts":{},"appProtocol":true,"nodePorts":{"http":"","https":"","tcp":{},"udp":{}}}},"shareProcessNamespace":false,"extraContainers":[],"extraVolumeMounts":[],"extraVolumes":[],"extraInitContainers":[],"extraModules":[],"opentelemetry":{"enabled":false,"name":"opentelemetry","image":{"registry":"registry.k8s.io","image":"ingress-nginx/opentelemetry","tag":"v20230721-3e2062ee5","digest":"sha256:13bee3f5223883d3ca62fee7309ad02d22ec00ff0d7033e3e9aca7a9f60fd472","distroless":true},"containerSecurityContext":{"runAsNonRoot":true,"runAsUser":65532,"allowPrivilegeEscalation":false,"seccompProfile":{"type":"RuntimeDefault"},"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true},"resources":{}},"admissionWebhooks":{"name":"admission","annotations":{},"enabled":true,"extraEnvs":[],"failurePolicy":"Fail","port":8443,"certificate":"/usr/local/certificates/cert","key":"/usr/local/certificates/key","namespaceSelector":{},"objectSelector":{},"labels":{},"existingPsp":"","service":{"annotations":{},"externalIPs":[],"loadBalancerSourceRanges":[],"servicePort":443,"type":"ClusterIP"},"createSecretJob":{"name":"create","securityContext":{"runAsNonRoot":true,"runAsUser":65532,"allowPrivilegeEscalation":false,"seccompProfile":{"type":"RuntimeDefault"},"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true},"resources":{}},"patchWebhookJob":{"name":"patch","securityContext":{"runAsNonRoot":true,"runAsUser":65532,"allowPrivilegeEscalation":false,"seccompProfile":{"type":"RuntimeDefault"},"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true},"resources":{}},"patch":{"enabled":true,"image":{"registry":"registry.k8s.io","image":"ingress-nginx/kube-webhook-certgen","tag":"v1.4.0","digest":"sha256:44d1d0e9f19c63f58b380c5fddaca7cf22c7cee564adeff365225a5df5ef3334","pullPolicy":"IfNotPresent"},"priorityClassName":"","podAnnotations":{},"networkPolicy":{"enabled":false},"nodeSelector":{"kubernetes.io/os":"linux"},"tolerations":[],"labels":{},"securityContext":{}},"certManager":{"enabled":false,"rootCert":{"duration":""},"admissionCert":{"duration":""}}},"metrics":{"port":10254,"portName":"metrics","enabled":false,"service":{"annotations":{},"labels":{},"externalIPs":[],"loadBalancerSourceRanges":[],"servicePort":10254,"type":"ClusterIP"},"serviceMonitor":{"enabled":false,"additionalLabels":{},"annotations":{},"namespace":"","namespaceSelector":{},"scrapeInterval":"30s","targetLabels":[],"relabelings":[],"metricRelabelings":[]},"prometheusRule":{"enabled":false,"additionalLabels":{},"rules":[]}},"lifecycle":{"preStop":{"exec":{"command":["/wait-shutdown"]}}},"priorityClassName":""}
+    refToSpecVar: ''
+    UIVarTitle: controller
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.certificate
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: /usr/local/certificates/cert
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.certificate
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.certManager.admissionCert.duration
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.certManager.admissionCert.duration
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.certManager.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.certManager.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.certManager.rootCert.duration
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.certManager.rootCert.duration
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.createSecretJob.name
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: create
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.createSecretJob.name
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: >-
+      controller.admissionWebhooks.createSecretJob.securityContext.allowPrivilegeEscalation
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: >-
+      controller.admissionWebhooks.createSecretJob.securityContext.allowPrivilegeEscalation
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: >-
+      controller.admissionWebhooks.createSecretJob.securityContext.capabilities.drop.0
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ALL
+    refToSpecVar: ''
+    UIVarTitle: >-
+      controller.admissionWebhooks.createSecretJob.securityContext.capabilities.drop.0
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: >-
+      controller.admissionWebhooks.createSecretJob.securityContext.readOnlyRootFilesystem
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: >-
+      controller.admissionWebhooks.createSecretJob.securityContext.readOnlyRootFilesystem
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.createSecretJob.securityContext.runAsNonRoot
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.createSecretJob.securityContext.runAsNonRoot
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.createSecretJob.securityContext.runAsUser
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '65532'
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.createSecretJob.securityContext.runAsUser
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: >-
+      controller.admissionWebhooks.createSecretJob.securityContext.seccompProfile.type
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: RuntimeDefault
+    refToSpecVar: ''
+    UIVarTitle: >-
+      controller.admissionWebhooks.createSecretJob.securityContext.seccompProfile.type
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.existingPsp
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.existingPsp
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.failurePolicy
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: Fail
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.failurePolicy
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.key
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: /usr/local/certificates/key
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.key
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.name
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: admission
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.name
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.patch.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.patch.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.patch.image.digest
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: sha256:44d1d0e9f19c63f58b380c5fddaca7cf22c7cee564adeff365225a5df5ef3334
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.patch.image.digest
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.patch.image.image
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ingress-nginx/kube-webhook-certgen
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.patch.image.image
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.patch.image.pullPolicy
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: IfNotPresent
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.patch.image.pullPolicy
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.patch.image.registry
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: registry.k8s.io
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.patch.image.registry
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.patch.image.tag
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: v1.4.0
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.patch.image.tag
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.patch.networkPolicy.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.patch.networkPolicy.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.patch.priorityClassName
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.patch.priorityClassName
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.patchWebhookJob.name
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: patch
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.patchWebhookJob.name
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: >-
+      controller.admissionWebhooks.patchWebhookJob.securityContext.allowPrivilegeEscalation
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: >-
+      controller.admissionWebhooks.patchWebhookJob.securityContext.allowPrivilegeEscalation
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: >-
+      controller.admissionWebhooks.patchWebhookJob.securityContext.capabilities.drop.0
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ALL
+    refToSpecVar: ''
+    UIVarTitle: >-
+      controller.admissionWebhooks.patchWebhookJob.securityContext.capabilities.drop.0
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: >-
+      controller.admissionWebhooks.patchWebhookJob.securityContext.readOnlyRootFilesystem
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: >-
+      controller.admissionWebhooks.patchWebhookJob.securityContext.readOnlyRootFilesystem
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.patchWebhookJob.securityContext.runAsNonRoot
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.patchWebhookJob.securityContext.runAsNonRoot
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.patchWebhookJob.securityContext.runAsUser
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '65532'
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.patchWebhookJob.securityContext.runAsUser
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: >-
+      controller.admissionWebhooks.patchWebhookJob.securityContext.seccompProfile.type
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: RuntimeDefault
+    refToSpecVar: ''
+    UIVarTitle: >-
+      controller.admissionWebhooks.patchWebhookJob.securityContext.seccompProfile.type
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.port
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '8443'
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.port
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.service.servicePort
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '443'
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.service.servicePort
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.admissionWebhooks.service.type
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ClusterIP
+    refToSpecVar: ''
+    UIVarTitle: controller.admissionWebhooks.service.type
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.allowSnippetAnnotations
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.allowSnippetAnnotations
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.autoscaling.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.autoscaling.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.autoscaling.maxReplicas
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '11'
+    refToSpecVar: ''
+    UIVarTitle: controller.autoscaling.maxReplicas
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.autoscaling.minReplicas
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '1'
+    refToSpecVar: ''
+    UIVarTitle: controller.autoscaling.minReplicas
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.autoscaling.targetCPUUtilizationPercentage
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '50'
+    refToSpecVar: ''
+    UIVarTitle: controller.autoscaling.targetCPUUtilizationPercentage
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.autoscaling.targetMemoryUtilizationPercentage
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '50'
+    refToSpecVar: ''
+    UIVarTitle: controller.autoscaling.targetMemoryUtilizationPercentage
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.configMapNamespace
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.configMapNamespace
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.containerName
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: controller
+    refToSpecVar: ''
+    UIVarTitle: controller.containerName
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.containerPort.http
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '80'
+    refToSpecVar: ''
+    UIVarTitle: controller.containerPort.http
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.containerPort.https
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '443'
+    refToSpecVar: ''
+    UIVarTitle: controller.containerPort.https
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.customTemplate.configMapKey
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.customTemplate.configMapKey
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.customTemplate.configMapName
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.customTemplate.configMapName
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.dnsPolicy
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ClusterFirst
+    refToSpecVar: ''
+    UIVarTitle: controller.dnsPolicy
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.electionID
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.electionID
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.enableAnnotationValidations
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.enableAnnotationValidations
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.enableMimalloc
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: controller.enableMimalloc
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.enableTopologyAwareRouting
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.enableTopologyAwareRouting
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.existingPsp
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.existingPsp
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.healthCheckHost
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.healthCheckHost
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.healthCheckPath
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: /healthz
+    refToSpecVar: ''
+    UIVarTitle: controller.healthCheckPath
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.hostNetwork
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.hostNetwork
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.hostPort.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.hostPort.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.hostPort.ports.http
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '80'
+    refToSpecVar: ''
+    UIVarTitle: controller.hostPort.ports.http
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.hostPort.ports.https
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '443'
+    refToSpecVar: ''
+    UIVarTitle: controller.hostPort.ports.https
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.image.allowPrivilegeEscalation
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.image.allowPrivilegeEscalation
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.image.chroot
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.image.chroot
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.image.digest
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: sha256:42b3f0e5d0846876b1791cd3afeb5f1cbbe4259d6f35651dcc1b5c980925379c
+    refToSpecVar: ''
+    UIVarTitle: controller.image.digest
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.image.digestChroot
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: sha256:7eb46ff733429e0e46892903c7394aff149ac6d284d92b3946f3baf7ff26a096
+    refToSpecVar: ''
+    UIVarTitle: controller.image.digestChroot
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.image.image
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ingress-nginx/controller
+    refToSpecVar: ''
+    UIVarTitle: controller.image.image
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.image.pullPolicy
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: IfNotPresent
+    refToSpecVar: ''
+    UIVarTitle: controller.image.pullPolicy
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.image.readOnlyRootFilesystem
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.image.readOnlyRootFilesystem
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.image.registry
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: registry.k8s.io
+    refToSpecVar: ''
+    UIVarTitle: controller.image.registry
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.image.runAsNonRoot
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: controller.image.runAsNonRoot
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.image.runAsUser
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '101'
+    refToSpecVar: ''
+    UIVarTitle: controller.image.runAsUser
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.image.seccompProfile.type
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: RuntimeDefault
+    refToSpecVar: ''
+    UIVarTitle: controller.image.seccompProfile.type
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.image.tag
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: v1.10.0
+    refToSpecVar: ''
+    UIVarTitle: controller.image.tag
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.ingressClass
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: nginx
+    refToSpecVar: ''
+    UIVarTitle: controller.ingressClass
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.ingressClassByName
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.ingressClassByName
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.ingressClassResource.controllerValue
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: k8s.io/ingress-nginx
+    refToSpecVar: ''
+    UIVarTitle: controller.ingressClassResource.controllerValue
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.ingressClassResource.default
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.ingressClassResource.default
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.ingressClassResource.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: controller.ingressClassResource.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.ingressClassResource.name
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: nginx
+    refToSpecVar: ''
+    UIVarTitle: controller.ingressClassResource.name
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.keda.apiVersion
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: keda.sh/v1alpha1
+    refToSpecVar: ''
+    UIVarTitle: controller.keda.apiVersion
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.keda.cooldownPeriod
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '300'
+    refToSpecVar: ''
+    UIVarTitle: controller.keda.cooldownPeriod
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.keda.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.keda.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.keda.maxReplicas
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '11'
+    refToSpecVar: ''
+    UIVarTitle: controller.keda.maxReplicas
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.keda.minReplicas
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '1'
+    refToSpecVar: ''
+    UIVarTitle: controller.keda.minReplicas
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.keda.pollingInterval
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '30'
+    refToSpecVar: ''
+    UIVarTitle: controller.keda.pollingInterval
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.keda.restoreToOriginalReplicaCount
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.keda.restoreToOriginalReplicaCount
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.kind
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: Deployment
+    refToSpecVar: ''
+    UIVarTitle: controller.kind
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.lifecycle.preStop.exec.command.0
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: /wait-shutdown
+    refToSpecVar: ''
+    UIVarTitle: controller.lifecycle.preStop.exec.command.0
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.livenessProbe.failureThreshold
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '5'
+    refToSpecVar: ''
+    UIVarTitle: controller.livenessProbe.failureThreshold
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.livenessProbe.httpGet.path
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: /healthz
+    refToSpecVar: ''
+    UIVarTitle: controller.livenessProbe.httpGet.path
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.livenessProbe.httpGet.port
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '10254'
+    refToSpecVar: ''
+    UIVarTitle: controller.livenessProbe.httpGet.port
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.livenessProbe.httpGet.scheme
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: HTTP
+    refToSpecVar: ''
+    UIVarTitle: controller.livenessProbe.httpGet.scheme
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.livenessProbe.initialDelaySeconds
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '10'
+    refToSpecVar: ''
+    UIVarTitle: controller.livenessProbe.initialDelaySeconds
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.livenessProbe.periodSeconds
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '10'
+    refToSpecVar: ''
+    UIVarTitle: controller.livenessProbe.periodSeconds
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.livenessProbe.successThreshold
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '1'
+    refToSpecVar: ''
+    UIVarTitle: controller.livenessProbe.successThreshold
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.livenessProbe.timeoutSeconds
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '1'
+    refToSpecVar: ''
+    UIVarTitle: controller.livenessProbe.timeoutSeconds
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.maxmindLicenseKey
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.maxmindLicenseKey
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.metrics.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.metrics.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.metrics.port
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '10254'
+    refToSpecVar: ''
+    UIVarTitle: controller.metrics.port
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.metrics.portName
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: metrics
+    refToSpecVar: ''
+    UIVarTitle: controller.metrics.portName
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.metrics.prometheusRule.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.metrics.prometheusRule.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.metrics.service.servicePort
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '10254'
+    refToSpecVar: ''
+    UIVarTitle: controller.metrics.service.servicePort
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.metrics.service.type
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ClusterIP
+    refToSpecVar: ''
+    UIVarTitle: controller.metrics.service.type
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.metrics.serviceMonitor.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.metrics.serviceMonitor.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.metrics.serviceMonitor.namespace
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.metrics.serviceMonitor.namespace
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.metrics.serviceMonitor.scrapeInterval
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 30s
+    refToSpecVar: ''
+    UIVarTitle: controller.metrics.serviceMonitor.scrapeInterval
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.minAvailable
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '1'
+    refToSpecVar: ''
+    UIVarTitle: controller.minAvailable
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.minReadySeconds
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '0'
+    refToSpecVar: ''
+    UIVarTitle: controller.minReadySeconds
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.name
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: controller
+    refToSpecVar: ''
+    UIVarTitle: controller.name
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.networkPolicy.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.networkPolicy.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.opentelemetry.containerSecurityContext.allowPrivilegeEscalation
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.opentelemetry.containerSecurityContext.allowPrivilegeEscalation
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.opentelemetry.containerSecurityContext.capabilities.drop.0
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ALL
+    refToSpecVar: ''
+    UIVarTitle: controller.opentelemetry.containerSecurityContext.capabilities.drop.0
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.opentelemetry.containerSecurityContext.readOnlyRootFilesystem
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: controller.opentelemetry.containerSecurityContext.readOnlyRootFilesystem
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.opentelemetry.containerSecurityContext.runAsNonRoot
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: controller.opentelemetry.containerSecurityContext.runAsNonRoot
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.opentelemetry.containerSecurityContext.runAsUser
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '65532'
+    refToSpecVar: ''
+    UIVarTitle: controller.opentelemetry.containerSecurityContext.runAsUser
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.opentelemetry.containerSecurityContext.seccompProfile.type
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: RuntimeDefault
+    refToSpecVar: ''
+    UIVarTitle: controller.opentelemetry.containerSecurityContext.seccompProfile.type
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.opentelemetry.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.opentelemetry.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.opentelemetry.image.digest
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: sha256:13bee3f5223883d3ca62fee7309ad02d22ec00ff0d7033e3e9aca7a9f60fd472
+    refToSpecVar: ''
+    UIVarTitle: controller.opentelemetry.image.digest
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.opentelemetry.image.distroless
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: controller.opentelemetry.image.distroless
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.opentelemetry.image.image
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ingress-nginx/opentelemetry
+    refToSpecVar: ''
+    UIVarTitle: controller.opentelemetry.image.image
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.opentelemetry.image.registry
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: registry.k8s.io
+    refToSpecVar: ''
+    UIVarTitle: controller.opentelemetry.image.registry
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.opentelemetry.image.tag
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: v20230721-3e2062ee5
+    refToSpecVar: ''
+    UIVarTitle: controller.opentelemetry.image.tag
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.opentelemetry.name
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: opentelemetry
+    refToSpecVar: ''
+    UIVarTitle: controller.opentelemetry.name
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.priorityClassName
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.priorityClassName
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.publishService.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: controller.publishService.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.publishService.pathOverride
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.publishService.pathOverride
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.readinessProbe.failureThreshold
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '3'
+    refToSpecVar: ''
+    UIVarTitle: controller.readinessProbe.failureThreshold
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.readinessProbe.httpGet.path
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: /healthz
+    refToSpecVar: ''
+    UIVarTitle: controller.readinessProbe.httpGet.path
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.readinessProbe.httpGet.port
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '10254'
+    refToSpecVar: ''
+    UIVarTitle: controller.readinessProbe.httpGet.port
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.readinessProbe.httpGet.scheme
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: HTTP
+    refToSpecVar: ''
+    UIVarTitle: controller.readinessProbe.httpGet.scheme
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.readinessProbe.initialDelaySeconds
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '10'
+    refToSpecVar: ''
+    UIVarTitle: controller.readinessProbe.initialDelaySeconds
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.readinessProbe.periodSeconds
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '10'
+    refToSpecVar: ''
+    UIVarTitle: controller.readinessProbe.periodSeconds
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.readinessProbe.successThreshold
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '1'
+    refToSpecVar: ''
+    UIVarTitle: controller.readinessProbe.successThreshold
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.readinessProbe.timeoutSeconds
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '1'
+    refToSpecVar: ''
+    UIVarTitle: controller.readinessProbe.timeoutSeconds
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.replicaCount
+    varValueType: number
+    varValueSrcType: src_deployment_ui
+    hardcodedDefaultValue: '1'
+    refToSpecVar: ''
+    UIVarTitle: controller.replicaCount
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: number
+  - varName: controller.reportNodeInternalIp
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.reportNodeInternalIp
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.resources.requests.cpu
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 100m
+    refToSpecVar: ''
+    UIVarTitle: controller.resources.requests.cpu
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.resources.requests.memory
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 90Mi
+    refToSpecVar: ''
+    UIVarTitle: controller.resources.requests.memory
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.scope.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.scope.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.scope.namespace
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.scope.namespace
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.scope.namespaceSelector
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.scope.namespaceSelector
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.appProtocol
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: controller.service.appProtocol
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.clusterIP
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.service.clusterIP
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: controller.service.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.enableHttp
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: controller.service.enableHttp
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.enableHttps
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: controller.service.enableHttps
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.external.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: controller.service.external.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.externalTrafficPolicy
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.service.externalTrafficPolicy
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.internal.appProtocol
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: controller.service.internal.appProtocol
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.internal.clusterIP
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.service.internal.clusterIP
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.internal.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.service.internal.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.internal.externalTrafficPolicy
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.service.internal.externalTrafficPolicy
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.internal.ipFamilies.0
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: IPv4
+    refToSpecVar: ''
+    UIVarTitle: controller.service.internal.ipFamilies.0
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.internal.ipFamilyPolicy
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: SingleStack
+    refToSpecVar: ''
+    UIVarTitle: controller.service.internal.ipFamilyPolicy
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.internal.loadBalancerClass
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.service.internal.loadBalancerClass
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.internal.loadBalancerIP
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.service.internal.loadBalancerIP
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.internal.nodePorts.http
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.service.internal.nodePorts.http
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.internal.nodePorts.https
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.service.internal.nodePorts.https
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.internal.sessionAffinity
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.service.internal.sessionAffinity
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.internal.type
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.service.internal.type
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.ipFamilies.0
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: IPv4
+    refToSpecVar: ''
+    UIVarTitle: controller.service.ipFamilies.0
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.ipFamilyPolicy
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: SingleStack
+    refToSpecVar: ''
+    UIVarTitle: controller.service.ipFamilyPolicy
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.loadBalancerClass
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.service.loadBalancerClass
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.loadBalancerIP
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.service.loadBalancerIP
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.nodePorts.http
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.service.nodePorts.http
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.nodePorts.https
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.service.nodePorts.https
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.ports.http
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '80'
+    refToSpecVar: ''
+    UIVarTitle: controller.service.ports.http
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.ports.https
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '443'
+    refToSpecVar: ''
+    UIVarTitle: controller.service.ports.https
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.sessionAffinity
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.service.sessionAffinity
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.targetPorts.http
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: http
+    refToSpecVar: ''
+    UIVarTitle: controller.service.targetPorts.http
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.targetPorts.https
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: https
+    refToSpecVar: ''
+    UIVarTitle: controller.service.targetPorts.https
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.service.type
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: LoadBalancer
+    refToSpecVar: ''
+    UIVarTitle: controller.service.type
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.shareProcessNamespace
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.shareProcessNamespace
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.tcp.configMapNamespace
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.tcp.configMapNamespace
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.terminationGracePeriodSeconds
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '300'
+    refToSpecVar: ''
+    UIVarTitle: controller.terminationGracePeriodSeconds
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.udp.configMapNamespace
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: controller.udp.configMapNamespace
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: controller.watchIngressWithoutClass
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: controller.watchIngressWithoutClass
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend
+    varValueType: object
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: >-
+      {"enabled":false,"name":"defaultbackend","image":{"registry":"registry.k8s.io","image":"defaultbackend-amd64","tag":"1.5","pullPolicy":"IfNotPresent","runAsNonRoot":true,"runAsUser":65534,"allowPrivilegeEscalation":false,"seccompProfile":{"type":"RuntimeDefault"},"readOnlyRootFilesystem":true},"existingPsp":"","extraArgs":{},"serviceAccount":{"create":true,"name":"","automountServiceAccountToken":true},"extraEnvs":[],"port":8080,"livenessProbe":{"failureThreshold":3,"initialDelaySeconds":30,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":5},"readinessProbe":{"failureThreshold":6,"initialDelaySeconds":0,"periodSeconds":5,"successThreshold":1,"timeoutSeconds":5},"updateStrategy":{},"minReadySeconds":0,"tolerations":[],"affinity":{},"podSecurityContext":{},"containerSecurityContext":{},"podLabels":{},"nodeSelector":{"kubernetes.io/os":"linux"},"podAnnotations":{},"replicaCount":1,"minAvailable":1,"resources":{},"extraVolumeMounts":[],"extraVolumes":[],"extraConfigMaps":[],"autoscaling":{"annotations":{},"enabled":false,"minReplicas":1,"maxReplicas":2,"targetCPUUtilizationPercentage":50,"targetMemoryUtilizationPercentage":50},"networkPolicy":{"enabled":false},"service":{"annotations":{},"externalIPs":[],"loadBalancerSourceRanges":[],"servicePort":80,"type":"ClusterIP"},"priorityClassName":"","labels":{}}
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.autoscaling.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.autoscaling.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.autoscaling.maxReplicas
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '2'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.autoscaling.maxReplicas
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.autoscaling.minReplicas
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '1'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.autoscaling.minReplicas
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.autoscaling.targetCPUUtilizationPercentage
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '50'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.autoscaling.targetCPUUtilizationPercentage
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.autoscaling.targetMemoryUtilizationPercentage
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '50'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.autoscaling.targetMemoryUtilizationPercentage
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.existingPsp
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.existingPsp
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.image.allowPrivilegeEscalation
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.image.allowPrivilegeEscalation
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.image.image
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: defaultbackend-amd64
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.image.image
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.image.pullPolicy
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: IfNotPresent
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.image.pullPolicy
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.image.readOnlyRootFilesystem
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.image.readOnlyRootFilesystem
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.image.registry
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: registry.k8s.io
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.image.registry
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.image.runAsNonRoot
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.image.runAsNonRoot
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.image.runAsUser
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '65534'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.image.runAsUser
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.image.seccompProfile.type
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: RuntimeDefault
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.image.seccompProfile.type
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.image.tag
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '1.5'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.image.tag
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.livenessProbe.failureThreshold
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '3'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.livenessProbe.failureThreshold
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.livenessProbe.initialDelaySeconds
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '30'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.livenessProbe.initialDelaySeconds
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.livenessProbe.periodSeconds
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '10'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.livenessProbe.periodSeconds
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.livenessProbe.successThreshold
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '1'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.livenessProbe.successThreshold
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.livenessProbe.timeoutSeconds
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '5'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.livenessProbe.timeoutSeconds
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.minAvailable
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '1'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.minAvailable
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.minReadySeconds
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '0'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.minReadySeconds
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.name
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: defaultbackend
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.name
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.networkPolicy.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.networkPolicy.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.port
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '8080'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.port
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.priorityClassName
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.priorityClassName
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.readinessProbe.failureThreshold
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '6'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.readinessProbe.failureThreshold
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.readinessProbe.initialDelaySeconds
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '0'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.readinessProbe.initialDelaySeconds
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.readinessProbe.periodSeconds
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '5'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.readinessProbe.periodSeconds
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.readinessProbe.successThreshold
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '1'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.readinessProbe.successThreshold
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.readinessProbe.timeoutSeconds
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '5'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.readinessProbe.timeoutSeconds
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.replicaCount
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '1'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.replicaCount
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.service.servicePort
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '80'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.service.servicePort
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.service.type
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ClusterIP
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.service.type
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.serviceAccount.automountServiceAccountToken
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.serviceAccount.automountServiceAccountToken
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.serviceAccount.create
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.serviceAccount.create
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: defaultBackend.serviceAccount.name
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: defaultBackend.serviceAccount.name
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: dhParam
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: dhParam
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: imagePullSecrets
+    varValueType: array
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '[]'
+    refToSpecVar: ''
+    UIVarTitle: imagePullSecrets
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: namespaceOverride
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: namespaceOverride
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: podSecurityPolicy
+    varValueType: object
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '{"enabled":false}'
+    refToSpecVar: ''
+    UIVarTitle: podSecurityPolicy
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: podSecurityPolicy.enabled
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: podSecurityPolicy.enabled
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: portNamePrefix
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: portNamePrefix
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: rbac
+    varValueType: object
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '{"create":true,"scope":false}'
+    refToSpecVar: ''
+    UIVarTitle: rbac
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: rbac.create
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: rbac.create
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: rbac.scope
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'false'
+    refToSpecVar: ''
+    UIVarTitle: rbac.scope
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: revisionHistoryLimit
+    varValueType: number
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '10'
+    refToSpecVar: ''
+    UIVarTitle: revisionHistoryLimit
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: serviceAccount
+    varValueType: object
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: >-
+      {"create":true,"name":"","automountServiceAccountToken":true,"annotations":{}}
+    refToSpecVar: ''
+    UIVarTitle: serviceAccount
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: serviceAccount.automountServiceAccountToken
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: serviceAccount.automountServiceAccountToken
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: serviceAccount.create
+    varValueType: boolean
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: 'true'
+    refToSpecVar: ''
+    UIVarTitle: serviceAccount.create
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: serviceAccount.name
+    varValueType: string
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: serviceAccount.name
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: tcp
+    varValueType: object
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '{}'
+    refToSpecVar: ''
+    UIVarTitle: tcp
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
+  - varName: udp
+    varValueType: object
+    varValueSrcType: src_hardcoded
+    hardcodedDefaultValue: '{}'
+    refToSpecVar: ''
+    UIVarTitle: udp
+    varApplyMethod: method_replace
+    UIVarValidationRules: []
+    UIVarInputType: string
 UIshowRequestsConfig: false
 enabledByDefault: true
 ServiceSrcType: Yes-HelmChart
