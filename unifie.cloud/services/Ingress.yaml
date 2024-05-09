@@ -2098,6 +2098,14 @@ rules:
     varApplyMethod: method_replace
     UIVarValidationRules: []
     UIVarInputType: string
+  - varName: default-ssl-certificate
+    varApplyMethod: method_replace
+    varValueType: any
+    varValueSrcType: src_deployment_ui
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: default-ssl-certificate
+    UIVarInputType: null
 UIshowRequestsConfig: false
 enabledByDefault: true
 ServiceSrcType: Yes-HelmChart
@@ -2105,3 +2113,12 @@ helmChartName: ingress-nginx
 helmRepositoryURL: https://kubernetes.github.io/ingress-nginx
 helmRepositoryName: ingress-nginx
 helmRepositoryChartName: ingress-nginx
+postProcessingRules:
+  - path: '["spec"]["template"]["spec"]["containers"][0]["args"]'
+    action: add
+    mainKind: Deployment
+    mainMetadataName: release-name-ingress-nginx-controller
+    varValueType: string
+    varValueSrcType: variable
+    addPropertyName: AddOneMoreArg
+    value: Values.default-ssl-certificate
