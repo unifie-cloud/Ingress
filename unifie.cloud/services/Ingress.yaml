@@ -2106,6 +2106,15 @@ rules:
     refToSpecVar: ''
     UIVarTitle: controller.service.annotations
     UIVarInputType: yaml
+  - varName: default-ssl-certificate
+    varApplyMethod: method_replace
+    varValueType: any
+    varValueSrcType: src_deployment_ui
+    hardcodedDefaultValue: ''
+    refToSpecVar: ''
+    UIVarTitle: default-ssl-certificate
+    UIVarInputType: null
+
 UIshowRequestsConfig: false
 enabledByDefault: true
 ServiceSrcType: Yes-HelmChart
@@ -2119,6 +2128,6 @@ postProcessingRules:
     mainKind: Deployment
     mainMetadataName: release-name-ingress-nginx-controller
     varValueType: string
-    varValueSrcType: hardcoded
-    addPropertyName: NewProperty
-    value: '--default-ssl-certificate=default/letsencrypt-prod'
+    varValueSrcType: variable
+    addPropertyName: AddOneMoreArg
+    value: Values.default-ssl-certificate
