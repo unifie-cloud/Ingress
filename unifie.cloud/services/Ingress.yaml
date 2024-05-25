@@ -1396,7 +1396,7 @@ rules:
     UIVarInputType: string
   - varName: controller.service.internal.loadBalancerClass
     varValueType: string
-    varValueSrcType: src_hardcoded
+    varValueSrcType: src_deployment_ui
     hardcodedDefaultValue: ''
     refToSpecVar: ''
     UIVarTitle: controller.service.internal.loadBalancerClass
@@ -2098,6 +2098,14 @@ rules:
     varApplyMethod: method_replace
     UIVarValidationRules: []
     UIVarInputType: string
+  - varName: controller.service.annotations
+    varApplyMethod: method_replace
+    varValueType: object
+    varValueSrcType: src_deployment_ui
+    hardcodedDefaultValue: '{}'
+    refToSpecVar: ''
+    UIVarTitle: controller.service.annotations
+    UIVarInputType: yaml
 UIshowRequestsConfig: false
 enabledByDefault: true
 ServiceSrcType: Yes-HelmChart
@@ -2105,3 +2113,12 @@ helmChartName: ingress-nginx
 helmRepositoryURL: https://kubernetes.github.io/ingress-nginx
 helmRepositoryName: ingress-nginx
 helmRepositoryChartName: ingress-nginx
+postProcessingRules:
+  - path: '["spec"]["template"]["spec"]["containers"][0]["args"]'
+    action: add
+    mainKind: Deployment
+    mainMetadataName: release-name-ingress-nginx-controller
+    varValueType: string
+    varValueSrcType: hardcoded
+    addPropertyName: NewProperty
+    value: '--default-ssl-certificate=default/letsencrypt-prod'
