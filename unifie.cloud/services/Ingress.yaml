@@ -341,6 +341,14 @@ rules:
     varApplyMethod: method_replace
     UIVarValidationRules: []
     UIVarInputType: string
+  - varName: controller.affinity
+    varApplyMethod: method_replace
+    varValueType: object
+    varValueSrcType: src_deployment_ui
+    hardcodedDefaultValue: '{}'
+    refToSpecVar: ''
+    UIVarTitle: controller.affinity
+    UIVarInputType: yaml
   - varName: controller.allowSnippetAnnotations
     varValueType: boolean
     varValueSrcType: src_hardcoded
@@ -352,49 +360,57 @@ rules:
     UIVarInputType: string
   - varName: controller.autoscaling.enabled
     varValueType: boolean
-    varValueSrcType: src_hardcoded
+    varValueSrcType: src_deployment_ui
     hardcodedDefaultValue: 'false'
     refToSpecVar: ''
     UIVarTitle: controller.autoscaling.enabled
     varApplyMethod: method_replace
     UIVarValidationRules: []
-    UIVarInputType: string
+    UIVarInputType: boolean
   - varName: controller.autoscaling.maxReplicas
     varValueType: number
-    varValueSrcType: src_hardcoded
+    varValueSrcType: src_deployment_ui
     hardcodedDefaultValue: '11'
     refToSpecVar: ''
     UIVarTitle: controller.autoscaling.maxReplicas
     varApplyMethod: method_replace
     UIVarValidationRules: []
-    UIVarInputType: string
+    UIVarInputType: number
   - varName: controller.autoscaling.minReplicas
     varValueType: number
-    varValueSrcType: src_hardcoded
+    varValueSrcType: src_deployment_ui
     hardcodedDefaultValue: '1'
     refToSpecVar: ''
     UIVarTitle: controller.autoscaling.minReplicas
     varApplyMethod: method_replace
     UIVarValidationRules: []
-    UIVarInputType: string
+    UIVarInputType: number
   - varName: controller.autoscaling.targetCPUUtilizationPercentage
     varValueType: number
-    varValueSrcType: src_hardcoded
+    varValueSrcType: src_deployment_ui
     hardcodedDefaultValue: '50'
     refToSpecVar: ''
     UIVarTitle: controller.autoscaling.targetCPUUtilizationPercentage
     varApplyMethod: method_replace
     UIVarValidationRules: []
-    UIVarInputType: string
+    UIVarInputType: number
   - varName: controller.autoscaling.targetMemoryUtilizationPercentage
     varValueType: number
-    varValueSrcType: src_hardcoded
+    varValueSrcType: src_deployment_ui
     hardcodedDefaultValue: '50'
     refToSpecVar: ''
     UIVarTitle: controller.autoscaling.targetMemoryUtilizationPercentage
     varApplyMethod: method_replace
     UIVarValidationRules: []
-    UIVarInputType: string
+    UIVarInputType: number
+  - varName: controller.config
+    varApplyMethod: method_replace
+    varValueType: object
+    varValueSrcType: src_deployment_ui
+    hardcodedDefaultValue: '{}'
+    refToSpecVar: ''
+    UIVarTitle: controller.config
+    UIVarInputType: json
   - varName: controller.configMapNamespace
     varValueType: string
     varValueSrcType: src_hardcoded
@@ -784,10 +800,10 @@ rules:
     UIVarInputType: string
   - varName: controller.kind
     varValueType: string
-    varValueSrcType: src_hardcoded
+    varValueSrcType: src_deployment_ui
     hardcodedDefaultValue: Deployment
     refToSpecVar: ''
-    UIVarTitle: controller.kind
+    UIVarTitle: controller.kind ( 'DaemonSet' or 'Deployment' )
     varApplyMethod: method_replace
     UIVarValidationRules: []
     UIVarInputType: string
@@ -1638,7 +1654,7 @@ rules:
     UIVarTitle: defaultBackend.autoscaling.enabled
     varApplyMethod: method_replace
     UIVarValidationRules: []
-    UIVarInputType: string
+    UIVarInputType: boolean
   - varName: defaultBackend.autoscaling.maxReplicas
     varValueType: number
     varValueSrcType: src_hardcoded
@@ -1674,7 +1690,7 @@ rules:
     UIVarTitle: defaultBackend.autoscaling.targetMemoryUtilizationPercentage
     varApplyMethod: method_replace
     UIVarValidationRules: []
-    UIVarInputType: string
+    UIVarInputType: number
   - varName: defaultBackend.enabled
     varValueType: boolean
     varValueSrcType: src_hardcoded
@@ -2099,6 +2115,14 @@ rules:
     varApplyMethod: method_replace
     UIVarValidationRules: []
     UIVarInputType: string
+  - varName: ssl-protocols
+    varApplyMethod: method_replace
+    varValueType: any
+    varValueSrcType: src_deployment_ui
+    hardcodedDefaultValue: TLSv1.3 TLSv1.2
+    refToSpecVar: ''
+    UIVarTitle: ssl-protocols
+    UIVarInputType: text
   - varName: tcp
     varValueType: object
     varValueSrcType: src_hardcoded
@@ -2133,3 +2157,11 @@ postProcessingRules:
     varValueSrcType: variable
     addPropertyName: AddOneMoreArg
     value: Values.default-ssl-certificate
+  - path: '["data"]'
+    action: add
+    mainKind: ConfigMap
+    mainMetadataName: release-name-ingress-nginx-controller
+    varValueType: string
+    varValueSrcType: variable
+    addPropertyName: ssl-protocols
+    value: Values.ssl-protocols
