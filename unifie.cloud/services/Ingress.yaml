@@ -350,14 +350,14 @@ rules:
     UIVarTitle: controller.affinity
     UIVarInputType: yaml
   - varName: controller.allowSnippetAnnotations
-    varValueType: boolean
-    varValueSrcType: src_hardcoded
-    hardcodedDefaultValue: 'false'
+    varValueType: string
+    varValueSrcType: src_deployment_ui
+    hardcodedDefaultValue: 'true'
     refToSpecVar: ''
     UIVarTitle: controller.allowSnippetAnnotations
     varApplyMethod: method_replace
     UIVarValidationRules: []
-    UIVarInputType: string
+    UIVarInputType: boolean
   - varName: controller.autoscaling.enabled
     varValueType: boolean
     varValueSrcType: src_deployment_ui
@@ -407,7 +407,10 @@ rules:
     varApplyMethod: method_replace
     varValueType: object
     varValueSrcType: src_deployment_ui
-    hardcodedDefaultValue: '{}'
+    hardcodedDefaultValue: >-
+      {     "enable-real-ip": "true",     "use-forwarded-headers": "true",    
+      "compute-full-forwarded-for": "true",     "real-ip-header":
+      "proxy_protocol" }
     refToSpecVar: ''
     UIVarTitle: controller.config
     UIVarInputType: json
@@ -1360,8 +1363,8 @@ rules:
     UIVarInputType: string
   - varName: controller.service.externalTrafficPolicy
     varValueType: string
-    varValueSrcType: src_hardcoded
-    hardcodedDefaultValue: ''
+    varValueSrcType: src_deployment_ui
+    hardcodedDefaultValue: Local
     refToSpecVar: ''
     UIVarTitle: controller.service.externalTrafficPolicy
     varApplyMethod: method_replace
@@ -1396,8 +1399,8 @@ rules:
     UIVarInputType: string
   - varName: controller.service.internal.externalTrafficPolicy
     varValueType: string
-    varValueSrcType: src_hardcoded
-    hardcodedDefaultValue: ''
+    varValueSrcType: src_deployment_ui
+    hardcodedDefaultValue: Local
     refToSpecVar: ''
     UIVarTitle: controller.service.internal.externalTrafficPolicy
     varApplyMethod: method_replace
