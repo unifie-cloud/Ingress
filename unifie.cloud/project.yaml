@@ -7,7 +7,13 @@ title: Ingress
 logo: AppstoreAddOutlined
 tags:
   - Ingress
-  - DevOps
-description: Ingress
+  - devops
+description: >-
+  Ingress in Kubernetes is a resource that manages external access to services
+  in a cluster, usually via HTTP/HTTPS. It acts as an entry point for external
+  traffic, providing routing of requests to relevant services based on domain
+  names or paths. Ingress also supports SSL/TLS configuration for traffic
+  encryption and can integrate with load balancers. This makes it easier to
+  manage external access to applications in Kubernetes.
 oneDeploymentPerCluster: true
 notAllowRemoveNamespace: false
